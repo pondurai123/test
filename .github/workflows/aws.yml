@@ -5,17 +5,19 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
+      - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST }}
-          username: ubuntu
+          host: ${{ vars.HOST }}
+          username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/html
+            cd /var/www/test
             git pull origin main
