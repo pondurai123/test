@@ -20,5 +20,6 @@ jobs:
             git config --global --add safe.directory /var/www/html
             cd /var/www/html
             git pull origin main
+            git reset --hard origin/main
 
             echo "Deployment completed successfully"
